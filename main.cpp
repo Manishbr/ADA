@@ -1,36 +1,32 @@
-#include <iostream>
+#include<iostream>
 using namespace std;
+void largestElements(int A[], int n, int k){
+	int i,j,temp;
+	for(i=0;i<k;i++){
+		for(j=0; j<n-1-i;j++){
+			if(A[j]>A[j+1]){
+				temp = A[j+1];
+				A[j+1]=A[j];
+				A[j]=temp;
+			}
+		}
+		cout<<A[n-i-1]<<"\t";
+	}
+}
 int main()
 {
-	int num,start,end,sq,mid;
-	cout <<"enter the number";
-	cin >>num;
-	start=0;
-	end=num=-1;
-	mid=(start+end)/2;
-	while(start<=end)
-	{
-		if(mid*mid==num){
-			sq=mid;
-			break;
-		}
-		else if (mid*mid>num){
-			end=mid-1;
-			
-		}
-		else {
-			start=mid+1;
-		     sq=mid;
-			 
-			}
-			mid=(start+end)/2;
+	int *A, n, k;
+	cout<<"Enter number of elements :";
+	cin>>n;
+	A = new int[n];
+	for(int i=0;i<n;i++){
+		cout<<"Enter element :";
+		cin>>A[i];
 	}
-	cout<<sq;
-	
-	
-	
-	
-	}
-
-
+	cout<<"Enter k :";
+	cin>>k;
+	largestElements(A,n,k);
+	cout<<"\n";
+	return 0;
+}
 
